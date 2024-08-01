@@ -1,24 +1,24 @@
-# Create MySQL HeatWave Database System
+# Crea un DBSystem HeatWave
 
 ![mysql heatwave](./images/mysql-heatwave-logo.jpg "mysql heatwave")
 
-## Introduction
+## Introducción
 
-In this lab, you will create and configure a MySQL DB System.
+En este laboratorio, crearás y configurarás un DB System HeatWave.
 
-_Estimated Time:_ 15 minutes
 
-### Objectives
+_Tiempo estimado:_ 15 minutos
 
-In this lab, you will be guided through the following tasks:
+### Objetivos
 
-- Create Virtual Cloud Network
-- Create MySQL HeatWave (DB System) Instance
+En este laboratorio, serás guiado a través de las siguientes tareas:
 
-### Prerequisites
+- Creación de una Virtual Cloud Network
+- Creación de una instancia de HeatWave (DB System)
 
-- An Oracle Trial or Paid Cloud Account
-- Some Experience with MySQL Shell
+### Prerequisitos
+
+- Una cuenta de prueba o de pago de Oracle Cloud Infraestructure
 
 ## Task 1: Create Virtual Cloud Network
 

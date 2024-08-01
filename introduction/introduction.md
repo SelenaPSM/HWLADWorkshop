@@ -1,18 +1,18 @@
-# Introduction
+# Introducción
 
 ![mysql heatwave](./images/mysql-heatwave-logo.jpg "mysql heatwave")
 
-## About this Workshop
+## Acerca de este Workshop
 
-MySQL HeatWave is a fully managed database service with an integrated query accelerator which enables organizations to efficiently run transaction processing, real-time analytics, data warehouse and machine learning on data stored inside MySQL database or in the object store.
+MySQL HeatWave es un servicio de base de datos totalmente gestionado con un acelerador de consultas integrado que permite a las organizaciones ejecutar de manera eficiente el procesamiento de transacciones, el análisis en tiempo real, el almacén de datos y el aprendizaje automático en los datos almacenados dentro de la base de datos MySQL o en el almacén de objetos.
 
-MySQL HeatWave eliminates the need for complex ETL operations to move data out of MySQL to run analytics or machine learning. Existing MySQL applications can run on MySQL HeatWave without any change and get orders of magnitude better query performance with the built-in query accelerator. With MySQL HeatWave, organizations can also run analytics on hundreds of terabytes of data in object store in a variety of file formats like CSV, Parquet, export files from Aurora or Redshift, without requiring data to be stored inside MySQL.
+MySQL HeatWave elimina la necesidad de operaciones ETL complejas para mover datos de MySQL para ejecutar análisis o aprendizaje automático. Las aplicaciones MySQL existentes se pueden ejecutar en MySQL HeatWave sin ningún cambio y obtener órdenes de magnitud para mejorar el rendimiento de las consultas con el acelerador de consultas integrado. Con MySQL HeatWave, las organizaciones también pueden ejecutar análisis en cientos de terabytes de datos en el almacén de objetos en una variedad de formatos de archivo como CSV, Parquet, exportar archivos desde Aurora o Redshift, sin necesidad de almacenar datos en MySQL.
 
-In this workshop, you will learn how to create a MySQL HeatWave Cluster, connect to the cluster using MySQL Shell, run queries on HeatWave, run Analytics workloads in Oracle Cloud, and create a LAMP application.
+En este taller, aprenderá a crear un cluster de MySQL HeatWave, conectarse al cluster mediante MySQL Shell, ejecutar consultas en HeatWave, ejecutar cargas de trabajo de Analytics en Oracle Cloud y crear una aplicación LAMP.
 
-Overall this workshop will show you how easy it is to create and manage MySQL HeatWave and how MySQL HeatWave enables you to make informed business-critical decisions with real-time insights.
+En general, este taller te mostrará lo fácil que es crear y gestionar MySQL HeatWave y cómo MySQL HeatWave te permite tomar decisiones empresariales críticas con conocimiento de causa y en tiempo real.
 
-_Estimated Lab Time:_ 1.5 hours
+_Tiempo de laboratorio estimado:_ 1,5 horas
 
 ## About Product/Technology
 
