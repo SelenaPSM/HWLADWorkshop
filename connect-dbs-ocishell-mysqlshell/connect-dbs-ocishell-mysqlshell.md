@@ -1,65 +1,93 @@
-# Connect to MySQL HeatWave With Cloud Shell Private Access and OCI Shell
+# Crea una conexión a HeatWave por SSH y MySQLShell y restaura una base de datos TPCH
 
 ![mysql heatwave](./images/mysql-heatwave-logo.jpg "mysql heatwave")
 
-## Introduction
+## Introducción
 
-When working in the cloud, there are often times when your servers and services are not exposed to the public internet. The Oracle Cloud Infrastructure (OCI) MySQL HeatWave is an example of a service that is only accessible through private networks. Since the service is fully managed, we keep it siloed away from the internet to help protect your data from potential attacks and vulnerabilities. It’s a good practice to limit resource exposure as much as possible, but at some point, you’ll likely want to connect to those resources. That’s where Cloud Shell Private Access enters the picture. Cloud Shell Private Access allows you to connect a Cloud Shell session to a private network so you can access  your MySQL HeatWave Database without having the network traffic flow over public networks
+Al trabajar en la nube, a menudo hay ocasiones en las que sus servidores y servicios no están expuestos a la red pública de Internet. Oracle Cloud Infrastructure (OCI) MySQL HeatWave es un ejemplo de un servicio al que solo se puede acceder a través de redes privadas. Dado que el servicio está totalmente gestionado, lo mantenemos aislado de Internet para ayudar a proteger sus datos de posibles ataques y vulnerabilidades. Es una buena práctica limitar la exposición a los recursos tanto como sea posible, pero en algún momento, es probable que desee conectarse a esos recursos. Ahí es donde entra en escena el acceso privado de Cloud Shell. El acceso privado de Cloud Shell permite conectar una sesión de Cloud Shell a una red privada para que pueda acceder a la base de datos de MySQL HeatWave sin tener el flujo de tráfico de red a través de redes públicas
 
-_Estimated Lab Time:_ 10 minutes
+_Tiempo estimado:_ 10 minutes
 
-### Objectives
+### Objectivos
 
-In this lab, you will be guided through the following tasks:
+En este laboratorio, se le guiará por las siguientes tareas:
 
-- Connect to Cloud Shell
-- Setup Cloud Shell Private Access
-- Use MySQL Shell to Connect to your Heatwave Database
+- Conectar a Cloud Shell
+- Configurar acceso privado de Cloud Shell
+- Utilice MySQLShell para conectarse a la base de datos de Heatwave
 
 ### Prerequisites
 
-- An Oracle Trial or Paid Cloud Account
-- Some Experience with MySQL Shell
-- Must Complete Lab 1
+- Una cuenta de prueba o de pago de Oracle Cloud Infraestructure 
+- Laboratorio 1 completado
 
-## Task 1: Access Cloud Shell via the Console
+## Tarea 1: Accede a Cloud Shell desde la Consola de OCI 
 
-1. Login to the OCI Console.
-2. Click the Cloud Shell icon in the Console header. Note that the OCI CLI running in the Cloud Shell will execute commands against the region selected in the Console's Region selection menu when the Cloud Shell was started.
+1. Ingresa a la consola de OCI
+2. Haga clic en el icono de Cloud Shell en la cabecera de la consola. 
 
     ![cloudshell console button](./images/cloudshell-console-button.png "cloudshell console button")
 
-    This displays the Cloud Shell in a "drawer" at the bottom of the console:
-
+    Se mostrará la termnal de Cloud Shell en la parte baja de la pantalla
     ![cloudshell console drawer](./images/cloudshell-console-drawer.png "cloudshell console drawer")
 
-    You can use the icons in the upper right corner of the Cloud Shell window to minimize, maximize, restart, and close your Cloud Shell session.
+    Puede utilizar los iconos de la esquina superior derecha de la ventana de Cloud Shell para minimizar, maximizar, reiniciar y cerrar la sesión de Cloud Shell.
 
-## Task 2: Setup Cloud Shell Private Access
+## Tarea 2: Ingrese a la Instancia de Cómputo utilizando SSH 
+1. Abra la llave privada ssh y copie su contenido
+    ![heatwave endpoint](./images/mysql-detail-active.png "heatwave endpoint")
 
-1. To change the network your Cloud Shell session is using to the HeatWave Database network, use the drop-down Network menu at the top of the Cloud Shell terminal window:
+2. Abra un editor de texto desde OCI Cloud Shell
 
-    ![cloud shell private access dropdown terminal](./images/cloud_shell_private_access_dropdown_terminal.png "cloud shell private access dropdown terminal")
+    ```bash
+    <copy>nano id_rsa</copy>
+    ```
 
-2. Select the Private Network Setup menu item. this will bring up the Private Network Setup panel. This panel allows you to select details for the private network you want to use:
+3. Dentro del editor, pegue el contenido de la llave privada ssh
+    ![heatwave endpoint](./images/mysql-detail-active.png "heatwave endpoint")
 
-    ![cloud shell private access vcn](./images/cloud_shell_private_access_dropdown_vcn.png "cloud shell private access vcn")
+4. Cambie los permisos de la llave privada ssh
+    ```bash
+    <copy>sudo chmod 400 id_rsa</copy>
+    ```
 
-3. Select the compartment that you want to use, and then select the VCN and the Subnet to use from the drop-down list boxes. You can also optionally select one or more Network Security groups to use.
+5. Cree una conexión a HEATWAVE-Compute por SSH
 
-    ![cloud shell private network setup](./images/cloud_shell_private_network_setup.png "cloud shell private network setup")
+    Asegurese de agregar al final del comando, la IP de HEATWAVE-Compute
+    ```bash
+    <copy>ssh -i id_rsa opc@<IP> </copy>
+    ```
+    _Por ejemplo_: ssh -i id_rsa opc@192.34.1.10
 
-4. Click on the Connect to this network button to switch your Cloud Shell network connection to the HeatWave Database network.
+    ![heatwave endpoint](./images/mysql-detail-active.png "heatwave endpoint")
 
-    Your Cloud Shell session is now connected to your HeatWave private network, as indicated in the Networking drop-down at the top of the Cloud Shell terminal session:
+## Tarea 3: Descargue MySQL Shell 
+1. Instale MySQL Shell, ejecute:
+    ```bash
+    <copy>sudo install -y mysql-shell</copy>
+    ```
+    ![heatwave endpoint](./images/mysql-detail-active.png "heatwave endpoint")
 
-    ![cloud shell private network connected](./images/cloud_shell_private_network_connected.png "cloud shell private network connected")
+2. Cree una conexión al DBSystem con mysqlshell
 
-    You can see details about your private network connection by clicking the Details link.
+    Asegurese de reemplazar la IP con la IP del DBSystem
 
-    ![cloud shell private network details](./images/cloud_shell_private_network_details.png "cloud shell private network details")
+    ```bash
+    <copy>mysqlsh admin@<IP> </copy>
+    ```
+     _Por ejemplo_: mysqlsh admin@10.0.1.202
+    ![heatwave endpoint](./images/mysql-detail-active.png "heatwave endpoint")
+    
+3. Ingresa la contraseña
+    ```bash
+    <copy>Welcome!</copy>
+    ```
+    ![heatwave endpoint](./images/mysql-detail-active.png "heatwave endpoint")
 
-## Task 3: Install airportdb sample data
+4. Escriba 'Y', para asegurar que MySQL Shell guarde la contraseña del usuario admin.
+    ![heatwave endpoint](./images/mysql-detail-active.png "heatwave endpoint")
+
+## Tarea 4: Restaure la data de ejemplo TPCH
 
  To install the airportdb database:  **Connect to MySQL Database Service**
 

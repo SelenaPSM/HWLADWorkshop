@@ -7,12 +7,12 @@
             "filename": "../../introduction/introduction.md"
         },
         {
-            "title": "Lab 1: Crea un DBSystem HeatWave",
+            "title": "Lab 1: Crea una Instancia de Cómputo y un DBSystem HeatWave",
             "filename": "../../create-dbs/create-dbs.md"
         },
 
         {
-          "title": "Lab 2: Crea una conexión con HeatWave utilizando OCI Cloud Shell y MySQL Shell",
+          "title": "Lab 2: Crea una conexión a HeatWave por SSH y MySQLShell y restaura una base de datos TPCH",
           "filename": "../../connect-dbs-ocishell-mysqlshell/connect-dbs-ocishell-mysqlshell.md"
         },
 
@@ -22,7 +22,7 @@
         },
         
         {
-            "title": "Lab 4: Ejecuta queries ",
+            "title": "Lab 4: Ejecutando queries ",
             "filename": "../../run-queries/run-queries.md"
         },
         {
